@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés Fuentes · Asesor Fiscal | Contabilidad, Fiscalidad y RR. HH.</title>
+<meta name="description" content="Andrés Fuentes, asesor fiscal. Contabilidad, asesoría fiscal y recursos humanos para empresas y autónomos. Cumplimiento, criterio y respuesta directa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-950:#0A1730;
+    --navy-900:#0D1F40;
+    --navy-800:#11294E;
+    --navy-600:#21436F;
+    --steel-400:#88A1C4;
+    --steel-200:#C9D4E7;
+    --gold-500:#C8A24B;
+    --gold-300:#E2C788;
+    --paper-50:#F5F6F9;
+    --paper-100:#EBEEF4;
+    --ink-900:#101729;
+    --ink-600:#3C4A66;
+    --line-soft:rgba(33,67,111,0.16);
+    --serif:'IBM Plex Serif', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono:'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+    --header-h:78px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);}
+  body{
+    margin:0;
+    background:var(--paper-50);
+    color:var(--ink-900);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  ::selection{background:var(--gold-300);color:var(--navy-950);}
+
+  :focus-visible{outline:2px solid var(--gold-500);outline-offset:3px;border-radius:2px;}
+
+  .container{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.container{padding:0 22px;}}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-500);
+    margin:0 0 16px;
+  }
+
+  section{position:relative;}
+
+  /* ============ REVEAL / MOTION ============ */
+  .reveal{opacity:1;}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.is-in{opacity:1;transform:translateY(0);}
+  }
+
+  /* ============ HEADER / NAV ============ */
+  header.site-header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:24px 0;
+    transition:padding .35s ease, background .35s ease, box-shadow .35s ease;
+  }
+  header.site-header.scrolled{
+    padding:14px 0;
+    background:rgba(10,23,48,0.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 24px rgba(5,12,28,0.25);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .brand{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    font-weight:600;
+    color:#fff;
+    text-decoration:none;
+    letter-spacing:.01em;
+    padding-left: 50px;
+  }
+  .brand-dot{color:var(--gold-500);}
+  nav.nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    color:var(--steel-200);
+    text-decoration:none;
+    font-size:.93rem;
+    font-weight:500;
+    position:relative;
+    padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a:not(.nav-cta)::after{
+    content:'';position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--gold-500);
+    transition:right .3s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-links a:not(.nav-cta):hover,
+  .nav-links a:not(.nav-cta).active{color:#fff;}
+  .nav-links a:not(.nav-cta):hover::after,
+  .nav-links a:not(.nav-cta).active::after{right:0;}
+  .nav-cta{
+    border:1px solid var(--gold-500);
+    color:var(--gold-300) !important;
+    padding:9px 18px;
+    border-radius:3px;
+    font-family:var(--mono);
+    font-size:.82rem;
+    letter-spacing:.03em;
+    transition:background .25s ease,color .25s ease;
+  }
+  .nav-cta:hover{background:var(--gold-500);color:var(--navy-950) !important;}
+
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;}
+  .nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .3s ease, opacity .3s ease;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:860px){
+    .nav-toggle{display:flex;}
+    nav.nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:flex-start;gap:0;
+      background:rgba(10,23,48,0.97);backdrop-filter:blur(10px);
+      max-height:0;overflow:hidden;
+      transition:max-height .4s ease;
+      padding:0 28px;
+    }
+    nav.nav-links.open{max-height:340px;padding:14px 28px 26px;}
+    .nav-links a{width:100%;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+    .nav-cta{margin-top:10px;text-align:center;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:linear-gradient(165deg,var(--navy-950) 0%,var(--navy-900) 60%,var(--navy-800) 100%);
+    overflow:hidden;
+    padding-top:var(--header-h);
+  }
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(136,161,196,0.07) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, rgba(136,161,196,0.07) 0 1px, transparent 1px 64px);
+    mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.2) 75%, transparent);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .hero-grid{animation:driftGrid 50s linear infinite;}
+  }
+  @keyframes driftGrid{from{background-position:0 0,0 0;}to{background-position:64px 64px,64px 64px;}}
+
+  .hero-inner{position:relative;z-index:2;max-width:740px;padding:90px 32px 60px;}
+  @media (max-width:640px){.hero-inner{padding:70px 22px 50px;}}
+
+  .hero h1{
+    font-family:var(--serif);
+    color:#fff;
+    font-weight:500;
+    font-size:clamp(2.3rem,5.4vw,3.9rem);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    margin:0 0 24px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-300);font-weight:400;}
+  .hero .lead{
+    color:var(--steel-200);
+    font-size:1.13rem;
+    max-width:540px;
+    margin:0 0 38px;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:58px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:.95rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+    cursor:pointer;
+  }
+  .btn-gold{background:var(--gold-500);color:var(--navy-950);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(200,162,75,0.28);background:var(--gold-300);}
+  .btn-ghost{background:transparent;border-color:rgba(136,161,196,0.4);color:#fff;}
+  .btn-ghost:hover{border-color:var(--gold-500);transform:translateY(-2px);}
+
+  .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+  .stat{padding-left:18px;border-left:1px solid rgba(136,161,196,0.3);}
+  .stat:first-child{padding-left:0;border-left:none;}
+  .stat-num{display:block;font-family:var(--mono);font-size:clamp(1.7rem,3vw,2.2rem);color:#fff;font-weight:500;}
+  .stat-num .accent{color:var(--gold-500);}
+  .stat-label{display:block;color:var(--steel-400);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-top:4px;}
+
+  .hero-line-wrap{position:absolute;left:0;right:0;bottom:0;height:130px;z-index:1;opacity:.85;}
+  .hero-line-wrap svg{width:100%;height:100%;}
+  .hero-line-wrap path{fill:none;stroke:var(--gold-500);stroke-width:2;stroke-linecap:round;}
+  .hero-dot{fill:var(--gold-500);}
+  @media (prefers-reduced-motion:no-preference){
+    .hero-dot{animation:pulseDot 2.4s ease-in-out infinite;transform-origin:center;}
+  }
+  @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.8);}}
+
+  /* ============ DIVIDER (ledger-line motif) ============ */
+  .divider{display:flex;justify-content:center;padding:0;background:var(--paper-50);}
+  .divider.on-dark{background:var(--navy-950);}
+  .divider svg{width:min(420px,80%);height:30px;}
+  .divider path{fill:none;stroke:var(--gold-500);stroke-width:1.4;stroke-linecap:round;opacity:.8;}
+  .divider-inner{padding:34px 0;}
+
+  /* ============ PILLARS ============ */
+  .pillars{padding:96px 0 70px;background:var(--paper-50);}
+  .section-head{max-width:680px;margin:0 0 56px;}
+  .section-head.center{margin:0 auto 56px;text-align:center;}
+  .section-head h2{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.7rem,3.4vw,2.5rem);
+    line-height:1.2;margin:0;color:var(--ink-900);
+  }
+  .section-head.on-dark h2{color:#fff;}
+  .section-head p.sub{color:var(--ink-600);font-size:1.04rem;margin-top:14px;}
+  .section-head.on-dark p.sub{color:var(--steel-200);}
+
+  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;}
+  .pillar{border-top:2px solid var(--line-soft);padding-top:22px;}
+  .pillar .label{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--navy-600);margin:0 0 10px;}
+  .pillar h3{font-family:var(--sans);font-size:1.18rem;font-weight:600;margin:0 0 10px;color:var(--ink-900);}
+  .pillar p{color:var(--ink-600);font-size:.97rem;margin:0;}
+  @media (max-width:860px){.pillars-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* ============ SERVICES ============ */
+  .services{padding:110px 0;background:var(--navy-950);}
+  .service-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px;}
+  @media (max-width:980px){.service-cards{grid-template-columns:1fr;}}
+
+  .service-card{
+    background:var(--navy-800);
+    border:1px solid rgba(136,161,196,0.18);
+    border-radius:7px;
+    padding:34px 30px 28px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .service-card:hover{transform:translateY(-5px);border-color:rgba(200,162,75,0.45);}
+  .service-icon{width:42px;height:42px;color:var(--gold-500);margin-bottom:20px;}
+  .service-icon svg{width:100%;height:100%;}
+  .service-card h3{font-family:var(--serif);color:#fff;font-size:1.35rem;font-weight:500;margin:0 0 10px;}
+  .service-card p.short{color:var(--steel-200);font-size:.97rem;margin:0 0 18px;}
+
+  .service-card details{border-top:1px solid rgba(136,161,196,0.18);padding-top:14px;}
+  .service-card summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    font-family:var(--mono);font-size:.82rem;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--gold-300);
+  }
+  .service-card summary::-webkit-details-marker{display:none;}
+  .summary-icon{flex-shrink:0;width:18px;height:18px;position:relative;}
+  .summary-icon::before,.summary-icon::after{
+    content:'';position:absolute;background:var(--gold-300);transition:transform .25s ease;
+  }
+  .summary-icon::before{left:0;top:50%;width:100%;height:1.4px;transform:translateY(-50%);}
+  .summary-icon::after{top:0;left:50%;height:100%;width:1.4px;transform:translateX(-50%);}
+  details[open] .summary-icon::after{transform:translateX(-50%) scaleY(0);}
+
+  .service-card ul{margin:16px 0 0;padding:0;list-style:none;}
+  .service-card li{
+    color:var(--steel-200);font-size:.93rem;
+    padding:9px 0;border-bottom:1px dashed rgba(136,161,196,0.18);
+    display:flex;gap:10px;
+  }
+  .service-card li:last-child{border-bottom:none;}
+  .service-card li::before{content:'—';color:var(--gold-500);flex-shrink:0;}
+
+  /* ============ PROCESS ============ */
+  .process{padding:110px 0;background:var(--paper-50);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:64px;position:relative;}
+  .process-grid::before{
+    content:'';position:absolute;top:24px;left:0;right:0;height:1px;
+    background:repeating-linear-gradient(90deg, var(--line-soft) 0 8px, transparent 8px 14px);
+    z-index:0;
+  }
+  @media (max-width:860px){
+    .process-grid{grid-template-columns:1fr;gap:38px;}
+    .process-grid::before{display:none;}
+  }
+  .step{position:relative;z-index:1;}
+  .step-num{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--paper-50);border:1px solid var(--navy-600);
+    color:var(--navy-600);font-family:var(--mono);font-size:.95rem;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .step h3{font-family:var(--sans);font-weight:600;font-size:1.08rem;margin:0 0 8px;color:var(--ink-900);}
+  .step p{color:var(--ink-600);font-size:.94rem;margin:0;}
+
+  /* ============ RESULTS ============ */
+  .results{padding:100px 0;background:var(--navy-950);overflow:hidden;}
+  .results-bg-mark{
+    position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+    font-family:var(--serif);font-size:min(40vw,420px);color:rgba(136,161,196,0.05);
+    line-height:1;pointer-events:none;user-select:none;
+  }
+  .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1;}
+  @media (max-width:860px){.results-grid{grid-template-columns:repeat(2,1fr);gap:42px 28px;}}
+  .result-stat{text-align:center;}
+  .result-num{font-family:var(--mono);font-size:clamp(2.1rem,4.6vw,3.1rem);color:var(--gold-500);font-weight:500;display:block;}
+  .result-label{color:var(--steel-200);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;margin-top:10px;display:block;}
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials{padding:110px 0;background:var(--paper-50);}
+  .testi-wrap{max-width:740px;margin:0 auto;}
+  .testi-track{position:relative;min-height:230px;}
+  .testi-slide{
+    position:absolute;inset:0;opacity:0;pointer-events:none;
+    transition:opacity .6s ease;
+  }
+  .testi-slide.active{opacity:1;pointer-events:auto;}
+  .testi-slide blockquote{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(1.2rem,2.4vw,1.5rem);
+    color:var(--ink-900);line-height:1.5;margin:0 0 22px;
+  }
+  .testi-slide cite{font-family:var(--sans);font-style:normal;font-weight:600;color:var(--navy-600);font-size:.92rem;}
+  .testi-dots{display:flex;justify-content:center;gap:10px;margin-top:30px;}
+  .testi-dots button{
+    width:10px;height:10px;border-radius:50%;border:1px solid var(--navy-600);
+    background:transparent;cursor:pointer;padding:0;transition:background .25s ease,border-color .25s ease;
+  }
+  .testi-dots button.active{background:var(--gold-500);border-color:var(--gold-500);}
+
+  /* ============ CONTACT ============ */
+  .contact{padding:120px 0 90px;background:linear-gradient(165deg,var(--navy-950),var(--navy-900));}
+  .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:980px;margin:56px auto 0;}
+  @media (max-width:860px){.contact-cards{grid-template-columns:1fr;}}
+
+  .contact-card{
+    display:block;text-decoration:none;
+    background:var(--navy-800);border:1px solid rgba(136,161,196,0.18);
+    border-radius:7px;padding:34px 28px;text-align:center;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .contact-card:hover{transform:translateY(-5px);border-color:rgba(200,162,75,0.5);}
+  .contact-icon{
+    width:54px;height:54px;border-radius:50%;
+    border:1px solid rgba(200,162,75,0.4);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;color:var(--gold-500);
+  }
+  .contact-icon svg{width:24px;height:24px;}
+  .contact-card h3{font-family:var(--serif);color:#fff;font-size:1.2rem;font-weight:500;margin:0 0 8px;}
+  .contact-card p{color:var(--steel-200);font-size:.92rem;margin:0 0 18px;}
+  .contact-card .cta-link{color:var(--gold-300);font-weight:600;font-size:.92rem;}
+  .contact-card .cta-link .arrow{display:inline-block;transition:transform .25s ease;margin-left:4px;}
+  .contact-card:hover .cta-link .arrow{transform:translateX(4px);}
+
+  .contact-note{text-align:center;font-family:var(--mono);font-size:.85rem;color:var(--steel-400);margin-top:50px;}
+
+  /* ============ FOOTER ============ */
+  .site-footer{background:var(--navy-950);border-top:1px solid rgba(136,161,196,0.12);padding:26px 0;}
+  .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--steel-400);font-size:.82rem;}
+
+  /* generic stagger helpers */
+  [data-delay="1"]{transition-delay:.06s;}
+  [data-delay="2"]{transition-delay:.16s;}
+  [data-delay="3"]{transition-delay:.26s;}
+  [data-delay="4"]{transition-delay:.36s;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav-inner">
+  <a href="#inicio" class="brand">Gestoría Administrativa<span class="brand-dot">.</span></a>
+  <a href="#inicio" class="brand">Andrés Fuentes<span class="brand-dot">.</span></a>
+  <nav class="nav-links" id="navLinks">
+      <a href="#servicios" data-nav>Servicios</a>
+      <a href="#proceso" data-nav>Proceso</a>
+      <a href="#resultados" data-nav>Resultados</a>
+      <a href="#testimonios" data-nav>Testimonios</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <img src="logo_2.jpg" alt="logo GA" title="GA" class="logo" style="position: absolute; top: 24px; left: 32px; height: 50px;">
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Asesoría fiscal · Contabilidad · Recursos Humanos · Gestiones con Dirección General Tráfico</p>
+      <h1>Tus números, <em>con criterio</em>.<br>Tu negocio, sin sorpresas.</h1>
+      <p class="lead">Acompaño a empresas y autónomos en sus decisiones fiscales, contables y laborales con datos claros, plazos cumplidos y respuesta directa — sin departamentos, sin esperas.</p>
+      <div class="hero-cta">
+        <a href="#contacto" class="btn btn-gold">Agenda una consulta gratuita</a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num"><span class="accent">+</span><span data-count="30">0</span></span>
+          <span class="stat-label">Años de experiencia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="accent">&lt;</span><span data-count="24">0</span>h</span>
+          <span class="stat-label">Tiempo de respuesta</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-line-wrap" aria-hidden="true">
+      <svg viewBox="0 0 600 130" preserveAspectRatio="none">
+        <path class="draw-line" d="M0,95 C45,100 65,78 95,82 C140,88 160,52 200,60 C245,68 265,30 315,38 C360,45 380,68 420,55 C460,42 480,18 525,22 C555,25 575,12 600,15"></path>
+        <circle class="hero-dot" cx="600" cy="15" r="4"></circle>
+      </svg>
+    </div>
+  </section>
+
+  <div class="divider on-dark">
+    <div class="divider-inner">
+      <svg viewBox="0 0 400 24" preserveAspectRatio="none">
+        <path class="draw-line" d="M0,12 L60,12 M76,12 L100,12 M180,4 C220,4 220,20 260,20 M340,12 L400,12"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ PILLARS ============ -->
+  <section class="pillars">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Por qué trabajar conmigo</p>
+        <h2>Cumplimiento sin estrés, criterio sin tecnicismos.</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal" data-delay="1">
+          <p class="label">Rigor</p>
+          <h3>Cada cifra se revisa antes de llegar a ti</h3>
+          <p>Doble verificación en cada cierre y cada modelo. Cero atajos, cero sustos en una inspección.</p>
+        </div>
+        <div class="pillar reveal" data-delay="2">
+          <p class="label">Anticipación</p>
+          <h3>Vencimientos bajo control, no bajo presión</h3>
+          <p>Calendario fiscal y de nóminas siempre por delante. Te avisamos antes de que toque actuar, no después.</p>
+        </div>
+        <div class="pillar reveal" data-delay="3">
+          <p class="label">Cercanía</p>
+          <h3>Hablas con quien lleva tu caso, siempre</h3>
+          <p>Sin departamentos, sin tickets, sin esperar tres días por una respuesta a algo urgente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-head center on-dark reveal">
+        <p class="eyebrow">Servicios</p>
+        <h2>Todo lo que tu negocio necesita para estar en regla — y un paso por delante.</h2>
+        <p class="sub">Tres áreas, un único interlocutor. Sin fricciones entre lo fiscal, lo contable y lo laboral.</p>
+      </div>
+
+      <div class="service-cards">
+        <article class="service-card reveal" data-delay="1">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7h17a4 4 0 0 1 4 4v22a3.2 3.2 0 0 0-3.2-3.2H8z"/>
+              <path d="M8 7v22.8"/>
+              <path d="M14 15h10M14 20h10M14 25h6"/>
+            </svg>
+          </div>
+          <h3>Contabilidad</h3>
+          <p class="short">Tus cuentas al día, siempre — listas para decidir, no solo para archivar.</p>
+          <details>
+            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
+            <ul>
+              <li>Llevanza de libros contables y conciliaciones bancarias</li>
+              <li>Cuentas anuales y depósito en el Registro</li>
+              <li>Reporting mensual claro, sin jerga</li>
+              <li>Previsión de tesorería y control de cobros y pagos</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="service-card reveal" data-delay="2">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 5l13 5.5v9c0 9.5-6 14.5-13 17.5C13 33.5 7 28.5 7 19.5v-9z"/>
+              <path d="M14 20.5l5 5 9-10.5"/>
+            </svg>
+          </div>
+          <h3>Asesoría fiscal</h3>
+          <p class="short">Cumple en plazo, paga lo justo, duerme tranquilo el resto del trimestre.</p>
+          <details>
+            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
+            <ul>
+              <li>Declaraciones trimestrales y anuales</li>
+              <li>Planificación fiscal a medida de tu actividad</li>
+              <li>Representación ante la Agencia Tributaria</li>
+              <li>Revisión y optimización legal de la carga impositiva</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="service-card reveal" data-delay="3">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="15" cy="14" r="5.2"/>
+              <path d="M5.5 34c0-7 4-12 9.5-12s9.5 5 9.5 12"/>
+              <circle cx="28" cy="16" r="4"/>
+              <path d="M24 34c.3-5.5 3.2-9.5 8.5-9.7"/>
+            </svg>
+          </div>
+          <h3>Recursos Humanos</h3>
+          <p class="short">Tu equipo, gestionado sin fricción ni errores de última hora.</p>
+          <details>
+            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
+            <ul>
+              <li>Altas, bajas y redacción de contratos</li>
+              <li>Nóminas y seguros sociales en plazo</li>
+              <li>Asesoramiento laboral y convenios colectivos</li>
+              <li>Gestión de despidos y conflictos laborales</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>Un proceso claro, de principio a cierre.</h2>
+      </div>
+      <div class="process-grid">
+        <div class="step reveal" data-delay="1">
+          <div class="step-num">01</div>
+          <h3>Diagnóstico inicial</h3>
+          <p>Analizamos tu situación fiscal, contable y laboral: qué funciona, qué riesgos hay y qué se puede optimizar.</p>
+        </div>
+        <div class="step reveal" data-delay="2">
+          <div class="step-num">02</div>
+          <h3>Plan a medida</h3>
+          <p>Diseñamos una estrategia fiscal y de gestión de personal adaptada a tu actividad y al tamaño de tu equipo.</p>
+        </div>
+        <div class="step reveal" data-delay="3">
+          <div class="step-num">03</div>
+          <h3>Ejecución</h3>
+          <p>Llevamos tu contabilidad, presentamos modelos fiscales y gestionamos nóminas y contratos en plazo.</p>
+        </div>
+        <div class="step reveal" data-delay="4">
+          <div class="step-num">04</div>
+          <h3>Seguimiento continuo</h3>
+          <p>Reporting periódico y ajustes en el plan según crece tu negocio o cambia la normativa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section class="results" id="resultados">
+    <span class="results-bg-mark" aria-hidden="true">%</span>
+    <div class="container">
+      <div class="section-head center on-dark reveal">
+        <p class="eyebrow">Resultados</p>
+        <h2>La tranquilidad, también se mide.</h2>
+      </div>
+      <div class="results-grid">
+        <div class="result-stat reveal" data-delay="1">
+          <span class="result-num"><span class="accent">+</span><span data-count="30">0</span></span>
+          <span class="result-label">Años experiencia</span>
+        </div>
+         <div class="result-stat reveal" data-delay="4">
+          <span class="result-num">&lt;<span data-count="24">0</span>h</span>
+          <span class="result-label">Tiempo medio de respuesta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-inner">
+      <svg viewBox="0 0 400 24" preserveAspectRatio="none">
+        <path class="draw-line" d="M0,12 L60,12 M76,12 L100,12 M180,4 C220,4 220,20 260,20 M340,12 L400,12"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Testimonios</p>
+        <h2>Lo que dicen quienes ya delegaron sus números.</h2>
+      </div>
+      <div class="testi-wrap reveal">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-slide active">
+            <blockquote>«Andrés simplificó algo que llevábamos años haciendo a ciegas. Ahora sabemos exactamente cuánto vamos a pagar y por qué.»</blockquote>
+            <cite>— Responsable de una empresa de servicios profesionales</cite>
+          </div>
+          <div class="testi-slide">
+            <blockquote>«Pasamos de temer cada trimestre a tener todo bajo control. La diferencia se nota en la tranquilidad, no solo en los números.»</blockquote>
+            <cite>— Fundadora de un comercio local</cite>
+          </div>
+          <div class="testi-slide">
+            <blockquote>«Gestiona las nóminas de mi equipo sin un solo error en dos años. Eso, hoy en día, tiene mucho valor.»</blockquote>
+            <cite>— Gerente de una pyme industrial</cite>
+          </div>
+        </div>
+        <div class="testi-dots" id="testiDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="section-head center on-dark reveal">
+        <p class="eyebrow">Contacto</p>
+        <h2>Hablemos de tus números.</h2>
+        <p class="sub">Cuéntame en qué punto está tu negocio. Respondo en menos de 24 horas y la primera consulta no tiene compromiso.</p>
+      </div>
+
+      <div class="contact-cards">
+        <a class="contact-card reveal" data-delay="1" href="https://www.linkedin.com/in/andresfuentesperez/" target="_blank" rel="noopener">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="28" height="28" rx="5"/>
+              <circle cx="14" cy="15" r="1.4" fill="currentColor" stroke="none"/>
+              <path d="M14 19.5v9.5"/>
+              <path d="M21 29v-6.2c0-2.4 1.7-3.8 3.8-3.8s3.8 1.4 3.8 3.8V29"/>
+              <path d="M21 19.5V29"/>
+            </svg>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>Revisa mi trayectoria y conecta conmigo profesionalmente.</p>
+          <span class="cta-link">Ver perfil <span class="arrow">→</span></span>
+        </a>
+
+        <a class="contact-card reveal" data-delay="2" href="https://wa.me/34651000000?text=Hola%20Andr%C3%A9s%2C%20quiero%20una%20consulta" target="_blank" rel="noopener">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 7c-7.5 0-13.5 6-13.5 13.5 0 2.8.8 5.4 2.3 7.6L7 34l6.1-1.8c2.1 1.3 4.5 2 7 2 7.5 0 13.5-6 13.5-13.5S27.5 7 20 7z"/>
+              <path d="M14.5 18.5c0 6.5 5.2 11.8 11.8 11.8"/>
+            </svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>La vía más rápida para una primera consulta.</p>
+          <span class="cta-link">Escribir ahora <span class="arrow">→</span></span>
+        </a>
+
+        <a class="contact-card reveal" data-delay="3" href="tel:+34600000000">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 8c1.4 0 2.6 1 2.9 2.4l1.2 5c.3 1.2-.1 2.4-.9 3.2l-2 1.9c1.8 4 4.9 7.1 8.9 8.9l1.9-2c.8-.8 2-1.2 3.2-.9l5 1.2c1.4.3 2.4 1.5 2.4 2.9v3.6c0 1.8-1.5 3.2-3.3 3-12.8-1.4-22.9-11.5-24.3-24.3-.2-1.8 1.2-3.3 3-3.3z"/>
+            </svg>
+          </div>
+          <h3>Teléfono</h3>
+          <p>Si lo prefieres directo, llama y hablamos.</p>
+          <span class="cta-link">+34 651 00 00 00 <span class="arrow">→</span></span>
+        </a>
+      </div>
+
+      <p class="contact-note">andres.fuentes.sspa@gmail.com. Horario de atención: lunes a viernes, 9:00–18:00 (CET)</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Andrés Fuentes — Asesoría Fiscal, Contable, Recursos Humanos, gestiones Dirección General Tráfico</span>
+    <span>Aviso legal · Política de privacidad disponibles a petición</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Header scroll state ---------- */
+  var header = document.getElementById('siteHeader');
+  var ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        header.classList.toggle('scrolled', window.scrollY > 30);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile nav toggle ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- Active nav link on scroll ---------- */
+  var navAnchors = document.querySelectorAll('[data-nav]');
+  var sections = Array.prototype.slice.call(navAnchors).map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  if('IntersectionObserver' in window && sections.length){
+    var navObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = '#' + entry.target.id;
+        var link = document.querySelector('[data-nav][href="'+id+'"]');
+        if(!link) return;
+        if(entry.isIntersecting){
+          navAnchors.forEach(function(a){a.classList.remove('active');});
+          link.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){navObserver.observe(s);});
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(function(el){revealObserver.observe(el);});
+  } else {
+    revealEls.forEach(function(el){el.classList.add('is-in');});
+  }
+
+  /* ---------- Animated counters ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    if(reduced){ el.textContent = target; return; }
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if(progress < 1){ requestAnimationFrame(step); }
+      else { el.textContent = target; }
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window && counters.length){
+    var countObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.4});
+    counters.forEach(function(el){countObserver.observe(el);});
+  } else {
+    counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+
+  /* ---------- Draw-line motif ---------- */
+  var drawPaths = document.querySelectorAll('.draw-line');
+  drawPaths.forEach(function(path){
+    if(reduced){ return; }
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    path.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)';
+  });
+
+  function drawHeroLine(){
+    var heroPath = document.querySelector('.hero-line-wrap .draw-line');
+    if(heroPath && !reduced){
+      requestAnimationFrame(function(){
+        setTimeout(function(){ heroPath.style.strokeDashoffset = 0; }, 250);
+      });
+    }
+  }
+  drawHeroLine();
+
+  var dividerPaths = document.querySelectorAll('.divider .draw-line');
+  if('IntersectionObserver' in window && dividerPaths.length){
+    var lineObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.strokeDashoffset = 0;
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.6});
+    dividerPaths.forEach(function(p){lineObserver.observe(p);});
+  }
+
+  /* ---------- Testimonial carousel ---------- */
+  var slides = document.querySelectorAll('.testi-slide');
+  var dotsWrap = document.getElementById('testiDots');
+  var current = 0;
+  var autoplay;
+
+  slides.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Ver testimonio ' + (i+1));
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', function(){ goTo(i); restartAutoplay(); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = dotsWrap.querySelectorAll('button');
+
+  function goTo(i){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  function next(){ goTo((current + 1) % slides.length); }
+  function startAutoplay(){
+    if(reduced) return;
+    autoplay = setInterval(next, 6000);
+  }
+  function restartAutoplay(){
+    clearInterval(autoplay);
+    startAutoplay();
+  }
+  startAutoplay();
+
+  var testiSection = document.getElementById('testimonios');
+  testiSection.addEventListener('mouseenter', function(){ clearInterval(autoplay); });
+  testiSection.addEventListener('mouseleave', function(){ startAutoplay(); });
+
+})();
+</script>
+
+</body>
+</html>
