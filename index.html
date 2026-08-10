@@ -257,48 +257,98 @@
   @media (max-width:860px){.pillars-grid{grid-template-columns:1fr;gap:36px;}}
 
   /* ============ SERVICES ============ */
-  .services{padding:110px 0;background:var(--navy-950);}
-  .service-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px;}
-  @media (max-width:980px){.service-cards{grid-template-columns:1fr;}}
+.services{
+  padding:110px 0;
+  background:var(--navy-950);
+}
+
+.service-cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px;
+  margin-top:60px;
+}
+
+.service-card{
+  background:var(--navy-800);
+  border:1px solid rgba(136,161,196,0.18);
+  border-radius:7px;
+  padding:34px 30px 30px;
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  transition:transform .3s ease, border-color .3s ease;
+}
+
+.service-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(200,162,75,0.45);
+}
+
+.service-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:22px;
+}
+
+.service-number{
+  font-family:var(--mono);
+  color:var(--gold-300);
+  font-size:.82rem;
+  letter-spacing:.08em;
+}
+
+.service-icon{
+  width:42px;
+  height:42px;
+  color:var(--gold-500);
+  flex-shrink:0;
+}
+
+.service-icon svg{
+  width:100%;
+  height:100%;
+}
+
+.service-card h3{
+  font-family:var(--serif);
+  color:#fff;
+  font-size:1.45rem;
+  font-weight:500;
+  margin:0 0 14px;
+}
+
+.service-card p.short{
+  color:var(--steel-200);
+  font-size:.97rem;
+  line-height:1.7;
+  margin:0 0 24px;
+}
+
+.service-keywords{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid rgba(136,161,196,0.18);
+  font-family:var(--mono);
+  font-size:.78rem;
+  line-height:1.8;
+  letter-spacing:.025em;
+  color:var(--gold-300);
+}
+
+@media (max-width:860px){
+  .service-cards{
+    grid-template-columns:1fr;
+    gap:22px;
+    margin-top:44px;
+  }
 
   .service-card{
-    background:var(--navy-800);
-    border:1px solid rgba(136,161,196,0.18);
-    border-radius:7px;
-    padding:34px 30px 28px;
-    transition:transform .3s ease, border-color .3s ease;
+    padding:28px 24px;
   }
-  .service-card:hover{transform:translateY(-5px);border-color:rgba(200,162,75,0.45);}
-  .service-icon{width:42px;height:42px;color:var(--gold-500);margin-bottom:20px;}
-  .service-icon svg{width:100%;height:100%;}
-  .service-card h3{font-family:var(--serif);color:#fff;font-size:1.35rem;font-weight:500;margin:0 0 10px;}
-  .service-card p.short{color:var(--steel-200);font-size:.97rem;margin:0 0 18px;}
-
-  .service-card details{border-top:1px solid rgba(136,161,196,0.18);padding-top:14px;}
-  .service-card summary{
-    list-style:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:space-between;gap:10px;
-    font-family:var(--mono);font-size:.82rem;letter-spacing:.03em;text-transform:uppercase;
-    color:var(--gold-300);
-  }
-  .service-card summary::-webkit-details-marker{display:none;}
-  .summary-icon{flex-shrink:0;width:18px;height:18px;position:relative;}
-  .summary-icon::before,.summary-icon::after{
-    content:'';position:absolute;background:var(--gold-300);transition:transform .25s ease;
-  }
-  .summary-icon::before{left:0;top:50%;width:100%;height:1.4px;transform:translateY(-50%);}
-  .summary-icon::after{top:0;left:50%;height:100%;width:1.4px;transform:translateX(-50%);}
-  details[open] .summary-icon::after{transform:translateX(-50%) scaleY(0);}
-
-  .service-card ul{margin:16px 0 0;padding:0;list-style:none;}
-  .service-card li{
-    color:var(--steel-200);font-size:.93rem;
-    padding:9px 0;border-bottom:1px dashed rgba(136,161,196,0.18);
-    display:flex;gap:10px;
-  }
-  .service-card li:last-child{border-bottom:none;}
-  .service-card li::before{content:'—';color:var(--gold-500);flex-shrink:0;}
-
+}
   /* ============ PROCESS ============ */
   .process{padding:110px 0;background:var(--paper-50);}
   .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:64px;position:relative;}
@@ -398,7 +448,7 @@
 <body>
 <header class="site-header" id="siteHeader">
   <div class="container nav-inner" style="display: flex; flex-direction: column; align-items: center;">
-    <a href="#inicio" class="brand" style="text-align: center; margin-bottom: 5px;">Gestoría Administrativa. Andrés Fuentes Pérez<span class="brand-dot">.</span></a>
+    <a href="#inicio" class="brand" style="text-align: center; margin-bottom: 5px;"> Gestoría Administrativa Andrés Fuentes Pérez <span class="brand-dot"></span></a>
     <nav class="nav-links" id="navLinks" style="margin-top: 10px;">
       <a href="#servicios" data-nav>Servicios</a>
       <a href="#proceso" data-nav>Proceso</a>
@@ -487,82 +537,171 @@
   </section>
 
   <!-- ============ SERVICES ============ -->
-  <section class="services" id="servicios">
-    <div class="container">
-      <div class="section-head center on-dark reveal">
-        <p class="eyebrow">Servicios</p>
-        <h2>Todo lo que tu negocio necesita para estar en regla — y un paso por delante.</h2>
-        <p class="sub">Tres áreas, un único interlocutor. Sin fricciones entre lo fiscal, lo contable y lo laboral.</p>
-      </div>
+<section class="services" id="servicios">
+  <div class="container">
 
-      <div class="service-cards">
-        <article class="service-card reveal" data-delay="1">
+    <div class="section-head center on-dark reveal">
+      <p class="eyebrow">Servicios profesionales</p>
+
+      <h2>
+        Gestión integral para empresas, autónomos y particulares
+      </h2>
+
+      <p class="sub">
+        Realizamos una gestión profesional que va más allá del cumplimiento
+        de las obligaciones administrativas. Integramos las áreas fiscal,
+        contable, de recursos humanos y administrativa para facilitar la
+        gestión y la toma de decisiones con mayor información y seguridad.
+      </p>
+    </div>
+
+    <div class="service-cards">
+
+      <!-- 01 · GESTIÓN FISCAL -->
+      <article class="service-card reveal" data-delay="1">
+
+        <div class="service-top">
+          <span class="service-number">01</span>
+
           <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 40 40"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M20 5l13 5.5v9c0 9.5-6 14.5-13 17.5C13 33.5 7 28.5 7 19.5v-9z"/>
+              <path d="M14 20.5l5 5 9-10.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <h3>Planificación y gestión fiscal</h3>
+
+        <p class="short">
+          Gestión de las obligaciones tributarias de empresas, autónomos y
+          particulares, con planificación y seguimiento fiscal orientados a
+          anticipar decisiones y evitar incidencias.
+        </p>
+
+        <p class="service-keywords">
+          IVA · IRPF · Impuesto sobre Sociedades · Fiscalidad de herencias
+        </p>
+
+      </article>
+
+
+      <!-- 02 · CONTABILIDAD -->
+      <article class="service-card reveal" data-delay="2">
+
+        <div class="service-top">
+          <span class="service-number">02</span>
+
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
               <path d="M8 7h17a4 4 0 0 1 4 4v22a3.2 3.2 0 0 0-3.2-3.2H8z"/>
               <path d="M8 7v22.8"/>
               <path d="M14 15h10M14 20h10M14 25h6"/>
             </svg>
           </div>
-          <h3>Contabilidad</h3>
-          <p class="short">Tus cuentas al día, siempre — listas para decidir, no solo para archivar.</p>
-          <details>
-            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
-            <ul>
-              <li>Llevanza de libros contables y conciliaciones bancarias</li>
-              <li>Cuentas anuales y depósito en el Registro</li>
-              <li>Reporting mensual claro, sin jerga</li>
-              <li>Previsión de tesorería y control de cobros y pagos</li>
-            </ul>
-          </details>
-        </article>
+        </div>
 
-        <article class="service-card reveal" data-delay="2">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 5l13 5.5v9c0 9.5-6 14.5-13 17.5C13 33.5 7 28.5 7 19.5v-9z"/>
-              <path d="M14 20.5l5 5 9-10.5"/>
-            </svg>
-          </div>
-          <h3>Asesoría fiscal</h3>
-          <p class="short">Cumple en plazo, paga lo justo, duerme tranquilo el resto del trimestre.</p>
-          <details>
-            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
-            <ul>
-              <li>Declaraciones trimestrales y anuales</li>
-              <li>Planificación fiscal a medida de tu actividad</li>
-              <li>Representación ante la Agencia Tributaria</li>
-              <li>Revisión y optimización legal de la carga impositiva</li>
-            </ul>
-          </details>
-        </article>
+        <h3>Contabilidad y gestión económica</h3>
 
-        <article class="service-card reveal" data-delay="3">
+        <p class="short">
+          Gestión contable de PYMES y autónomos, elaboración de libros y
+          cuentas anuales, y análisis de la información económica para conocer
+          la evolución y rentabilidad del negocio.
+        </p>
+
+        <p class="service-keywords">
+          Contabilidad · Libros oficiales · Cuentas anuales · Análisis económico
+        </p>
+
+      </article>
+
+
+      <!-- 03 · RECURSOS HUMANOS -->
+      <article class="service-card reveal" data-delay="3">
+
+        <div class="service-top">
+          <span class="service-number">03</span>
+
           <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 40 40"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
               <circle cx="15" cy="14" r="5.2"/>
               <path d="M5.5 34c0-7 4-12 9.5-12s9.5 5 9.5 12"/>
               <circle cx="28" cy="16" r="4"/>
               <path d="M24 34c.3-5.5 3.2-9.5 8.5-9.7"/>
             </svg>
           </div>
-          <h3>Recursos Humanos</h3>
-          <p class="short">Tu equipo, gestionado sin fricción ni errores de última hora.</p>
-          <details>
-            <summary>Ver detalle del servicio <span class="summary-icon" aria-hidden="true"></span></summary>
-            <ul>
-              <li>Altas, bajas y redacción de contratos</li>
-              <li>Nóminas y seguros sociales en plazo</li>
-              <li>Asesoramiento laboral y convenios colectivos</li>
-              <li>Gestión de despidos y conflictos laborales</li>
-            </ul>
-          </details>
-        </article>
-      </div>
-    </div>
-  </section>
+        </div>
 
-  <!-- ============ PROCESS ============ -->
+        <h3>Gestión de Recursos Humanos</h3>
+
+        <p class="short">
+          Gestión integral de las personas y de las obligaciones laborales de
+          la empresa, desde nóminas, contratación y Seguridad Social hasta el
+          asesoramiento en convenios, conflictos y políticas de recursos humanos.
+        </p>
+
+        <p class="service-keywords">
+          Nóminas · Contratación · Seguridad Social · Convenios · Gestión de conflictos
+        </p>
+
+      </article>
+
+
+      <!-- 04 · DIRECCIÓN GENERAL DE TRÁFICO -->
+      <article class="service-card reveal" data-delay="4">
+
+        <div class="service-top">
+          <span class="service-number">04</span>
+
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M7 27h26"/>
+              <path d="M10 27l2-9h16l2 9"/>
+              <path d="M14 18l2-5h8l2 5"/>
+              <circle cx="13" cy="29" r="2.5"/>
+              <circle cx="27" cy="29" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <h3>Gestiones ante la DGT</h3>
+
+        <p class="short">
+          Gestión administrativa ante la Dirección General de Tráfico para
+          empresas, autónomos y particulares, con seguimiento del trámite hasta
+          su resolución.
+        </p>
+
+        <p class="service-keywords">
+          Transferencias · Cambios de titularidad · Matriculaciones · Otros trámites DGT
+        </p>
+
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ============ PROCESS ============ -->
   <section class="process" id="proceso">
     <div class="container">
       <div class="section-head reveal">
