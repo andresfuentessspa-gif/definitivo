@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gestoría Administrativa en Sevilla para PYMES | Andrés Fuentes Pérez</title>
-<meta name="description" content="Gestoría Administrativa en Sevilla especializada en gestión fiscal, contabilidad, recursos humanos y trámites ante la Dirección General de Tráfico para empresas, autónomos y particulares">
+<title>Gestoría Administrativa en Sevilla | Andrés Fuentes Pérez</title>
+<meta name="description" content="Gestoría Administrativa en Sevilla especializada en gestión fiscal, contabilidad, nóminas,recursos humanos y trámites ante la Dirección General de Tráfico para empresas, autónomos y particulares">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://gestoriaandresfuentes.es/">
 <meta property="og:type" content="website">
@@ -54,8 +54,9 @@
   :focus-visible{outline:2px solid var(--gold-500);outline-offset:3px;border-radius:2px;}
 
   .container{max-width:1180px;margin:0 auto;padding:0 32px;}
-  @media (max-width:640px){.container{padding:0 22px;}}
-
+@media (max-width:640px){
+  .container{padding:0 22px;}}
+  
   .eyebrow{
     font-family:var(--mono);
     font-size:0.78rem;
@@ -69,13 +70,13 @@
 
   /* ============ REVEAL / MOTION ============ */
   .reveal{opacity:1;}
-  @media (prefers-reduced-motion:no-preference){
-    .reveal{
+@media (prefers-reduced-motion:no-preference){
+  .reveal{
       opacity:0;
       transform:translateY(22px);
       transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
     }
-    .reveal.is-in{opacity:1;transform:translateY(0);}
+  .reveal.is-in{opacity:1;transform:translateY(0);}
   }
 
   /* ============ HEADER / NAV ============ */
@@ -90,7 +91,18 @@
     backdrop-filter:blur(10px);
     box-shadow:0 8px 24px rgba(5,12,28,0.25);
   }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .nav-inner{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    column-gap:24px;
+  }
+  .logo{
+    width:50px;
+    height:50px;
+    object-fit:cover;
+    flex-shrink:0;
+  }
   .brand{
     font-family:var(--serif);
     font-size:1.3rem;
@@ -98,7 +110,7 @@
     color:#fff;
     text-decoration:none;
     letter-spacing:.01em;
-    padding-left: 50px;
+    padding-left:0;
   }
   .brand-dot{color:var(--gold-500);}
   nav.nav-links{display:flex;align-items:center;gap:34px;}
@@ -137,20 +149,96 @@
   .nav-toggle.open span:nth-child(2){opacity:0;}
   .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  @media (max-width:860px){
-    .nav-toggle{display:flex;}
-    nav.nav-links{
-      position:absolute;top:100%;left:0;right:0;
-      flex-direction:column;align-items:flex-start;gap:0;
-      background:rgba(10,23,48,0.97);backdrop-filter:blur(10px);
-      max-height:0;overflow:hidden;
-      transition:max-height .4s ease;
-      padding:0 28px;
-    }
-    nav.nav-links.open{max-height:340px;padding:14px 28px 26px;}
-    .nav-links a{width:100%;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);}
-    .nav-cta{margin-top:10px;text-align:center;}
+@media (max-width:860px){
+  .nav-inner{
+  grid-template-columns:auto minmax(0,1fr) auto;
+  column-gap:12px;
   }
+
+  .logo{
+  width:42px;
+  height:42px;
+  }
+
+  .brand{
+  font-size:1rem;
+  line-height:1.2;
+  text-align:left;
+  min-width:0;
+  }
+
+  .nav-toggle{
+  display:flex;
+  }
+
+  nav.nav-links{
+  grid-column:1 / -1;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  background:rgba(10,23,48,0.97);
+  backdrop-filter:blur(10px);
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+  padding:0 28px;
+  }
+
+  nav.nav-links.open{
+  max-height:340px;
+  padding:14px 28px 26px;
+  }
+    
+  .nav-links a{
+  width:100%;
+  padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  }
+    
+  .nav-cta{
+  margin-top:10px;
+  text-align:center;
+  }
+}
+@media (max-width:480px){
+
+  header.site-header{
+    padding:16px 0;
+  }
+
+  header.site-header.scrolled{
+    padding:10px 0;
+  }
+
+  .logo{
+    width:38px;
+    height:38px;
+  }
+
+  .brand{
+    font-size:.92rem;
+    line-height:1.15;
+  }
+
+  .nav-inner{
+    column-gap:9px;
+  }
+}
+@media (max-width:360px){
+
+  .brand{
+    font-size:.84rem;
+  }
+
+  .logo{
+    width:35px;
+    height:35px;
+  }
+}
 
   /* ============ HERO ============ */
   .hero{
@@ -167,13 +255,17 @@
       repeating-linear-gradient(90deg, rgba(136,161,196,0.07) 0 1px, transparent 1px 64px);
     mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.2) 75%, transparent);
   }
-  @media (prefers-reduced-motion:no-preference){
-    .hero-grid{animation:driftGrid 50s linear infinite;}
+@media (prefers-reduced-motion:no-preference){
+  .hero-grid{animation:driftGrid 50s linear infinite;}
   }
   @keyframes driftGrid{from{background-position:0 0,0 0;}to{background-position:64px 64px,64px 64px;}}
 
-  .hero-inner{position:relative;z-index:2;max-width:740px;padding:90px 32px 60px;}
-  @media (max-width:640px){.hero-inner{padding:70px 22px 50px;}}
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:740px;
+    padding:90px 32px 60px;
+  }
 
   .hero h1{
     font-family:var(--serif);
@@ -184,7 +276,61 @@
     letter-spacing:-0.01em;
     margin:0 0 24px;
   }
-  .hero h1 em{font-style:italic;color:var(--gold-300);font-weight:400;}
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-300);
+    font-weight:400;
+  }
+
+@media (max-width:640px){
+  .hero-inner{
+    padding:70px 22px 50px;
+  }
+  .hero h1{
+    font-size:clamp(2rem,9vw,2.3rem);
+    line-height:1.08;
+    margin-bottom:20px;
+  }
+  .hero .lead{
+  font-size:1rem;
+  line-height:1.55;
+  margin-bottom:0;
+}
+
+.hero-motto{
+  font-size:1.08rem;
+  line-height:1.4;
+  margin:1.6rem 0 24px;
+}
+
+.hero-cta{
+  gap:10px;
+  margin-bottom:38px;
+}
+
+.hero-cta .btn{
+  padding:12px 18px;
+  font-size:.88rem;
+}
+
+.hero-stats{
+  gap:28px;
+}
+
+.stat{
+  padding-left:14px;
+}
+
+.stat-num{
+  font-size:1.7rem;
+}
+
+.stat-label{
+  font-size:.68rem;
+}
+}
+
   .hero .lead{
     color:var(--steel-200);
     font-size:1.13rem;
@@ -228,7 +374,7 @@
   .hero-line-wrap svg{width:100%;height:100%;}
   .hero-line-wrap path{fill:none;stroke:var(--gold-500);stroke-width:2;stroke-linecap:round;}
   .hero-dot{fill:var(--gold-500);}
-  @media (prefers-reduced-motion:no-preference){
+@media (prefers-reduced-motion:no-preference){
     .hero-dot{animation:pulseDot 2.4s ease-in-out infinite;transform-origin:center;}
   }
   @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.8);}}
@@ -258,22 +404,22 @@
   .pillar .label{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--navy-600);margin:0 0 10px;}
   .pillar h3{font-family:var(--sans);font-size:1.18rem;font-weight:600;margin:0 0 10px;color:var(--ink-900);}
   .pillar p{color:var(--ink-600);font-size:.97rem;margin:0;}
-  @media (max-width:860px){.pillars-grid{grid-template-columns:1fr;gap:36px;}}
+@media (max-width:860px){.pillars-grid{grid-template-columns:1fr;gap:36px;}}
 
   /* ============ SERVICES ============ */
-.services{
+  .services{
   padding:110px 0;
   background:var(--navy-950);
 }
 
-.service-cards{
+  .service-cards{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:26px;
   margin-top:60px;
 }
 
-.service-card{
+  .service-card{
   background:var(--navy-800);
   border:1px solid rgba(136,161,196,0.18);
   border-radius:7px;
@@ -284,12 +430,12 @@
   transition:transform .3s ease, border-color .3s ease;
 }
 
-.service-card:hover{
+  .service-card:hover{
   transform:translateY(-5px);
   border-color:rgba(200,162,75,0.45);
 }
 
-.service-top{
+  .service-top{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
@@ -297,26 +443,26 @@
   margin-bottom:22px;
 }
 
-.service-number{
+  .service-number{
   font-family:var(--mono);
   color:var(--gold-300);
   font-size:.82rem;
   letter-spacing:.08em;
 }
 
-.service-icon{
+  .service-icon{
   width:42px;
   height:42px;
   color:var(--gold-500);
   flex-shrink:0;
 }
 
-.service-icon svg{
+  .service-icon svg{
   width:100%;
   height:100%;
 }
 
-.service-card h3{
+  .service-card h3{
   font-family:var(--serif);
   color:#fff;
   font-size:1.45rem;
@@ -324,14 +470,14 @@
   margin:0 0 14px;
 }
 
-.service-card p.short{
+  .service-card p.short{
   color:var(--steel-200);
   font-size:.97rem;
   line-height:1.7;
   margin:0 0 24px;
 }
 
-.service-keywords{
+  .service-keywords{
   margin-top:auto;
   padding-top:18px;
   border-top:1px solid rgba(136,161,196,0.18);
@@ -361,7 +507,7 @@
     background:repeating-linear-gradient(90deg, var(--line-soft) 0 8px, transparent 8px 14px);
     z-index:0;
   }
-  @media (max-width:860px){
+@media (max-width:860px){
     .process-grid{grid-template-columns:1fr;gap:38px;}
     .process-grid::before{display:none;}
   }
@@ -384,37 +530,58 @@
     line-height:1;pointer-events:none;user-select:none;
   }
   .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1;}
-  @media (max-width:860px){.results-grid{grid-template-columns:repeat(2,1fr);gap:42px 28px;}}
+@media (max-width:860px){.results-grid{grid-template-columns:repeat(2,1fr);gap:42px 28px;}}
   .result-stat{text-align:center;}
-  .result-num{font-family:var(--mono);font-size:clamp(2.1rem,4.6vw,3.1rem);color:var(--gold-500);font-weight:500;display:block;}
   .result-label{color:var(--steel-200);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;margin-top:10px;display:block;}
 
-  /* ============ TESTIMONIALS ============ */
-  .testimonials{padding:110px 0;background:var(--paper-50);}
-  .testi-wrap{max-width:740px;margin:0 auto;}
-  .testi-track{position:relative;min-height:230px;}
-  .testi-slide{
-    position:absolute;inset:0;opacity:0;pointer-events:none;
-    transition:opacity .6s ease;
-  }
-  .testi-slide.active{opacity:1;pointer-events:auto;}
-  .testi-slide blockquote{
-    font-family:var(--serif);font-style:italic;
-    font-size:clamp(1.2rem,2.4vw,1.5rem);
-    color:var(--ink-900);line-height:1.5;margin:0 0 22px;
-  }
-  .testi-slide cite{font-family:var(--sans);font-style:normal;font-weight:600;color:var(--navy-600);font-size:.92rem;}
-  .testi-dots{display:flex;justify-content:center;gap:10px;margin-top:30px;}
-  .testi-dots button{
-    width:10px;height:10px;border-radius:50%;border:1px solid var(--navy-600);
-    background:transparent;cursor:pointer;padding:0;transition:background .25s ease,border-color .25s ease;
-  }
-  .testi-dots button.active{background:var(--gold-500);border-color:var(--gold-500);}
+/* Professional commitment */
+  .results .result-stat h3{
+  font-family:var(--serif);
+  color:#fff;
+  font-size:1.12rem;
+  font-weight:500;
+  line-height:1.35;
+  margin:16px 0 12px;
+}
+
+  .results .result-description{
+  color:var(--steel-200);
+  font-size:.92rem;
+  line-height:1.65;
+  margin:0 auto;
+  max-width:260px;
+}
+
+  .results .result-num{
+  display:block;
+  font-family:var(--mono);
+  font-size:1.15rem;
+  color:var(--gold-500);
+  font-weight:500;
+  letter-spacing:.08em;
+}
 
   /* ============ CONTACT ============ */
   .contact{padding:120px 0 90px;background:linear-gradient(165deg,var(--navy-950),var(--navy-900));}
-  .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:980px;margin:56px auto 0;}
-  @media (max-width:860px){.contact-cards{grid-template-columns:1fr;}}
+  .contact-cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+  max-width:1180px;
+  margin:56px auto 0;
+}
+
+@media (max-width:1000px){
+  .contact-cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media (max-width:640px){
+  .contact-cards{
+    grid-template-columns:1fr;
+  }
+}
 
   .contact-card{
     display:block;text-decoration:none;
@@ -451,19 +618,19 @@
 </head>
 <body>
 <header class="site-header" id="siteHeader">
-  <div class="container nav-inner" style="display: flex; flex-direction: column; align-items: center;">
-    <a href="#inicio" class="brand" style="text-align: center; margin-bottom: 5px;"> Gestoría Administrativa Andrés Fuentes Pérez <span class="brand-dot"></span></a>
+<div class="container nav-inner">
+<img src="logo_2.jpg" alt="Gestoría Administrativa Andrés Fuentes Pérez" class="logo">
+    <a href="#inicio" class="brand">Gestoría Administrativa Andrés Fuentes Pérez</a>
     <nav class="nav-links" id="navLinks" style="margin-top: 10px;">
       <a href="#servicios" data-nav>Servicios</a>
       <a href="#proceso" data-nav>Proceso</a>
-      <a href="#resultados" data-nav>Resultados</a>
-      <a href="#testimonios" data-nav>Testimonios</a>
+      <a href="#compromiso">Compromiso</a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <img src="logo_2.jpg" alt="logo GA" title="GA" class="logo" style="position: absolute; top: 24px; height: 50px; left:32px">
+    
   </div>
 </header>
 <main>
@@ -517,24 +684,28 @@
   <section class="pillars">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Por qué trabajar conmigo</p>
-        <h2>Cumplimiento sin estrés, criterio sin tecnicismos.</h2>
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>Rigor profesional, anticipación y atención directa.</h2>
       </div>
       <div class="pillars-grid">
         <div class="pillar reveal" data-delay="1">
-          <p class="label">Rigor</p>
-          <h3>Cada cifra se revisa antes de llegar a ti</h3>
-          <p>Doble verificación en cada cierre y cada modelo. Cero atajos, cero sustos en una inspección.</p>
+          <p class="label">Rigor profesional</p>
+          <h3>Revisión y control en cada gestión</h3>
+          <p>Aplicamos criterios de revisión y control en cada gestión, para
+          asegurar el correcto cumplimiento de las obligaciones y la
+          consistencia de la información.</p>
         </div>
         <div class="pillar reveal" data-delay="2">
           <p class="label">Anticipación</p>
-          <h3>Vencimientos bajo control, no bajo presión</h3>
-          <p>Calendario fiscal y de nóminas siempre por delante. Te avisamos antes de que toque actuar, no después.</p>
+          <h3>Planificación de plazos y necesidades</h3>
+          <p>Planificamos las actuaciones y obligaciones para anticipar plazos,
+          necesidades y posibles incidencias.</p>
         </div>
         <div class="pillar reveal" data-delay="3">
-          <p class="label">Cercanía</p>
-          <h3>Hablas con quien lleva tu caso, siempre</h3>
-          <p>Sin departamentos, sin tickets, sin esperar tres días por una respuesta a algo urgente.</p>
+          <p class="label">Atención directa</p>
+          <h3>Seguimiento cercano de cada asunto</h3>
+          <p>Mantenemos una comunicación directa y continuada para conocer la
+          situación del cliente y responder con agilidad.</p>
         </div>
       </div>
     </div>
@@ -591,7 +762,6 @@
 
       </article>
 
-
       <!-- 02 · CONTABILIDAD -->
       <article class="service-card reveal" data-delay="2">
 
@@ -625,7 +795,6 @@
         </p>
 
       </article>
-
 
       <!-- 03 · RECURSOS HUMANOS -->
       <article class="service-card reveal" data-delay="3">
@@ -661,7 +830,6 @@
         </p>
 
       </article>
-
 
       <!-- 04 · DIRECCIÓN GENERAL DE TRÁFICO -->
       <article class="service-card reveal" data-delay="4">
@@ -707,96 +875,100 @@
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">Cómo trabajamos</p>
-        <h2>Un proceso claro, de principio a cierre.</h2>
+        <h2>Un proceso claro, ordenado y adaptado a cada cliente.</h2>
       </div>
       <div class="process-grid">
         <div class="step reveal" data-delay="1">
           <div class="step-num">01</div>
           <h3>Diagnóstico inicial</h3>
-          <p>Analizamos tu situación fiscal, contable y laboral: qué funciona, qué riesgos hay y qué se puede optimizar.</p>
+          <p>Analizamos la situación y las necesidades del cliente para identificar
+          obligaciones, prioridades y aspectos que requieren especial seguimiento.</p>
         </div>
         <div class="step reveal" data-delay="2">
           <div class="step-num">02</div>
-          <h3>Plan a medida</h3>
-          <p>Diseñamos una estrategia fiscal y de gestión de personal adaptada a tu actividad y al tamaño de tu equipo.</p>
+          <h3>Plan de actuación</h3>
+          <p>Definimos la forma de trabajo, los plazos y las actuaciones necesarias
+          en función de cada situación.</p>
         </div>
         <div class="step reveal" data-delay="3">
           <div class="step-num">03</div>
-          <h3>Ejecución</h3>
-          <p>Llevamos tu contabilidad, presentamos modelos fiscales y gestionamos nóminas y contratos en plazo.</p>
+          <h3>Gestión y ejecución</h3>
+          <p>Realizamos las actuaciones fiscales, contables, de recursos humanos o
+          administrativas acordadas, con control de los plazos y la documentación.</p>
         </div>
         <div class="step reveal" data-delay="4">
           <div class="step-num">04</div>
           <h3>Seguimiento continuo</h3>
-          <p>Reporting periódico y ajustes en el plan según crece tu negocio o cambia la normativa.</p>
+          <p>Revisamos la evolución de cada asunto y adaptamos la gestión cuando
+          cambian las necesidades del cliente o la normativa aplicable.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ RESULTS ============ -->
-  <section class="results" id="resultados">
-    <span class="results-bg-mark" aria-hidden="true">%</span>
-    <div class="container">
-      <div class="section-head center on-dark reveal">
-        <p class="eyebrow">Resultados</p>
-        <h2>La tranquilidad, también se mide.</h2>
-      </div>
-      <div class="results-grid">
-        <div class="result-stat reveal" data-delay="1">
-          <span class="result-num"><span class="accent">+</span><span data-count="30">0</span></span>
-          <span class="result-label">Años experiencia</span>
-        </div>
-         <div class="result-stat reveal" data-delay="4">
-          <span class="result-num">&lt;<span data-count="24">0</span>h</span>
-          <span class="result-label">Tiempo medio de respuesta</span>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- ============ PROFESSIONAL COMMITMENT ============ -->
+<section class="results" id="compromiso">
+  <div class="container">
 
-  <div class="divider">
-    <div class="divider-inner">
-      <svg viewBox="0 0 400 24" preserveAspectRatio="none">
-        <path class="draw-line" d="M0,12 L60,12 M76,12 L100,12 M180,4 C220,4 220,20 260,20 M340,12 L400,12"></path>
-      </svg>
+    <div class="section-head center on-dark reveal">
+      <p class="eyebrow">Nuestro compromiso profesional</p>
+      <h2>La confianza de contar con una Gestoría Administrativa colegiada.</h2>
     </div>
+
+    <div class="results-grid">
+
+      <div class="result-stat reveal" data-delay="1">
+        <span class="result-num">01</span>
+        <h3>Colegiación</h3>
+        <p class="result-description">
+          Ejercicio profesional sujeto a los requisitos y normas de la
+          organización colegial.
+        </p>
+      </div>
+
+      <div class="result-stat reveal" data-delay="2">
+        <span class="result-num">02</span>
+        <h3>Responsabilidad profesional</h3>
+        <p class="result-description">
+          Asumimos cada actuación con responsabilidad, seguimiento y control
+          sobre la gestión encomendada.
+        </p>
+      </div>
+
+      <div class="result-stat reveal" data-delay="3">
+        <span class="result-num">03</span>
+        <h3>Cumplimiento normativo y deontológico</h3>
+        <p class="result-description">
+          Desarrollamos nuestra actividad conforme a la normativa aplicable y
+          a las normas deontológicas que regulan el ejercicio de la profesión
+          de Gestor Administrativo.
+        </p>
+      </div>
+
+      <div class="result-stat reveal" data-delay="4">
+        <span class="result-num">04</span>
+        <h3>Confidencialidad y protección de datos</h3>
+        <p class="result-description">
+          Tratamos la información y documentación de nuestros clientes con
+          confidencialidad y conforme a la normativa vigente en materia de
+          protección de datos personales.
+        </p>
+      </div>
+
+    </div>
+
   </div>
-
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="testimonials" id="testimonios">
-    <div class="container">
-      <div class="section-head center reveal">
-        <p class="eyebrow">Testimonios</p>
-        <h2>Lo que dicen quienes ya delegaron sus números.</h2>
-      </div>
-      <div class="testi-wrap reveal">
-        <div class="testi-track" id="testiTrack">
-          <div class="testi-slide active">
-            <blockquote>«Andrés simplificó algo que llevábamos años haciendo a ciegas. Ahora sabemos exactamente cuánto vamos a pagar y por qué.»</blockquote>
-            <cite>— Responsable de una empresa de servicios profesionales</cite>
-          </div>
-          <div class="testi-slide">
-            <blockquote>«Pasamos de temer cada trimestre a tener todo bajo control. La diferencia se nota en la tranquilidad, no solo en los números.»</blockquote>
-            <cite>— Fundadora de un comercio local</cite>
-          </div>
-          <div class="testi-slide">
-            <blockquote>«Gestiona las nóminas de mi equipo sin un solo error en dos años. Eso, hoy en día, tiene mucho valor.»</blockquote>
-            <cite>— Gerente de una pyme industrial</cite>
-          </div>
-        </div>
-        <div class="testi-dots" id="testiDots"></div>
-      </div>
-    </div>
-  </section>
+</section>
 
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contacto">
     <div class="container">
       <div class="section-head center on-dark reveal">
         <p class="eyebrow">Contacto</p>
-        <h2>Hablemos de tus números.</h2>
-        <p class="sub">Cuéntame en qué punto está tu negocio. Respondo en menos de 24 horas y la primera consulta no tiene compromiso.</p>
+        <h2>Hablemos de lo que necesitas gestionar</h2>
+        <p class="sub">Cuéntanos qué necesitas. Atendemos consultas fiscales, contables,
+    de recursos humanos y trámites ante la Dirección General de Tráfico.
+    La primera consulta es gratuita y sin compromiso.</p>
       </div>
 
       <div class="contact-cards">
@@ -834,12 +1006,35 @@
             </svg>
           </div>
           <h3>Teléfono</h3>
-          <p>Si lo prefieres directo, llama y hablamos.</p>
+          <p>Si lo prefieres, llama y hablamos.</p>
           <span class="cta-link">+34743044960 <span class="arrow">→</span></span>
         </a>
+        <a href="mailto:gestoria2026andres@gmail.com" class="contact-card reveal" data-delay="4">
+          <div class="contact-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="1.7"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+      <path d="M3 7l9 6 9-6"></path>
+    </svg>
+  </div>
+
+  <h3>Correo electrónico</h3>
+
+  <p>
+    Envíanos tu consulta o documentación por correo electrónico.
+  </p>
+
+  <span class="cta-link">
+    Escribir un email <span class="arrow">→</span>
+  </span>
+</a>
       </div>
 
-      <p class="contact-note">email: gestoria2026andres@gmail.com Horario de atención: lunes a viernes, 9:00–18:00 (CET)</p>
+      <p class="contact-note">Horario de atención: lunes a viernes, 9:00–18:00 (CET)</p>
     </div>
   </section>
 
@@ -989,44 +1184,6 @@
     }, {threshold:0.6});
     dividerPaths.forEach(function(p){lineObserver.observe(p);});
   }
-
-  /* ---------- Testimonial carousel ---------- */
-  var slides = document.querySelectorAll('.testi-slide');
-  var dotsWrap = document.getElementById('testiDots');
-  var current = 0;
-  var autoplay;
-
-  slides.forEach(function(_, i){
-    var dot = document.createElement('button');
-    dot.setAttribute('aria-label', 'Ver testimonio ' + (i+1));
-    if(i === 0) dot.classList.add('active');
-    dot.addEventListener('click', function(){ goTo(i); restartAutoplay(); });
-    dotsWrap.appendChild(dot);
-  });
-  var dots = dotsWrap.querySelectorAll('button');
-
-  function goTo(i){
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = i;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-  function next(){ goTo((current + 1) % slides.length); }
-  function startAutoplay(){
-    if(reduced) return;
-    autoplay = setInterval(next, 6000);
-  }
-  function restartAutoplay(){
-    clearInterval(autoplay);
-    startAutoplay();
-  }
-  startAutoplay();
-
-  var testiSection = document.getElementById('testimonios');
-  testiSection.addEventListener('mouseenter', function(){ clearInterval(autoplay); });
-  testiSection.addEventListener('mouseleave', function(){ startAutoplay(); });
-
 })();
 </script>
 
